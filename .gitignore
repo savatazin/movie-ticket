@@ -9,6 +9,8 @@
 .idea/dictionaries
 
 # Sensitive or high-churn files:
+*.iml
+.idea
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.xml
@@ -85,3 +87,8 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+.idea/
+README.md
+demo.iml
+pom.xml
+src/
