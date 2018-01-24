@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="MovieApp" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body data-ng-controller="MovieController">
+
+<div class="container">
+  <div class="row">
+    <div class="form-group">
+      <label for="movie-title">Title</label>
+      <input type="text" class="form-control" id="movie-title" placeholder="Title" data-ng-model="movieTitle">
+    </div>
+    <div class="form-group">
+      <label for="imdb-url">IDMB Url</label>
+      <input type="text" class="form-control" id="imdb-url" placeholder="IDMB Url" data-ng-model="imdbUrl">
+    </div>
+    <div class="form-group">
+      <label for="rotten-tomatoes-url">Rotten Tomatoes Url</label>
+      <input type="text" class="form-control" id="rotten-tomatoes-url" placeholder="Rotten Tomatoes Url"
+             data-ng-model="rottenTomatoesUrl">
+    </div>
+    <div class="form-group">
+      <label for="poster-img">Poster</label>
+      <input type="file" id="poster-img">
+      <input type="text" id="poster-img-url" hidden="hidden" data-ng-model="posterImgUrl">
+    </div>
+    <div class="form-group">
+      <label for="banner-img">Banner</label>
+      <input type="file" id="banner-img">
+      <input type="text" id="banner-img-url" hidden="hidden" data-ng-model="bannerImgUrl">
+    </div>
+    <div th:switch="${formAction}">
+      <button th:case="'save'" class="btn btn-default" data-ng-click="save()">Save</button>
+      <button th:case="'update'" class="btn btn-default" data-ng-click="update()">Update</button>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    var app = angular.module('MovieApp', []);
+    app.controller('MovieController', ['$scope', '$http', function ($scope, $http) {
+      $scope.id = "[[${id}]]";
+      $scope.movieTitle = "[[${movieTitle}]]";
+      $scope.imdbUrl = "[[${imdbUrl}]]";
+      $scope.rottenTomatoesUrl = "[[${rottenTomatoesUrl}]]";
+      $scope.posterImgUrl = "[[${posterImgUrl}]]";
+      $scope.bannerImgUrl = "[[${bannerImgUrl}]]";
+
+      $scope.save = function () {
+        $http.post('/admin/movie', {
+          title: $scope.movieTitle,
+          imdb_url: $scope.imdbUrl,
+          rotten_tomatoes_url: $scope.rottenTomatoesUrl,
+          poster_img_url: $scope.posterImgUrl,
+          banner_img_url: $scope.bannerImgUrl
+        }).then(function (response) {
+          console.log(response);
+        });
+      };
+
+      $scope.update = function () {
+        $http.put('/admin/movie/' + $scope.id, {
+          title: $scope.movieTitle,
+          imdb_url: $scope.imdbUrl,
+          rotten_tomatoes_url: $scope.rottenTomatoesUrl,
+          poster_img_url: $scope.posterImgUrl,
+          banner_img_url: $scope.bannerImgUrl
+        }).then(function (response) {
+          console.log(response);
+        });
+      };
+
+      $("#poster-img").on("change", function () {
+        uploadFile('#poster-img');
+      });
+      $("#banner-img").on("change", function () {
+        uploadFile('#banner-img');
+      });
+
+      function uploadFile(elem) {
+        var formData = new FormData();
+        formData.append('uploadfile', $(elem)[0].files[0]);
+        $http.post('/image/upload', formData, {
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
+        })
+          .then(function (response) {
+            if (response.status === 201) {
+              console.log(response.headers('location'));
+              $(elem + '-url').attr('value', response.headers('location'));
+              if (elem === '#poster-img') {
+                $scope.poster_img_url = response.headers('location');
+              } else {
+                $scope.banner_img_url = response.headers('location');
+              }
+            }
+          });
+      }
+    }]);
+    /*]]>*/
+  </script>
+
+</body>
+</html>
