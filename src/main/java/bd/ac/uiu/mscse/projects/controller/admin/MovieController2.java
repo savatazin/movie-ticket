@@ -19,7 +19,7 @@ import javax.websocket.server.PathParam;
 
 @Controller
 @RequestMapping(value = "/admin/movie")
-public class MovieController {
+public class MovieController2 {
 
   @Autowired
   private UserService userService;
@@ -53,11 +53,11 @@ public class MovieController {
     return modelAndView;
   }
 
-  @RequestMapping(value = {"/", ""}, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public String save(@RequestBody Movie movie) {
-    System.out.println(movieService.save(movie));
-    return "ok";
-  }
+//  @RequestMapping(value = {"/", ""}, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//  public String save(@RequestBody Movie movie) {
+//    System.out.println(movieService.save(movie));
+//    return "ok";
+//  }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public String update(@RequestBody Movie movie, @PathVariable(value = "id") Integer id) {

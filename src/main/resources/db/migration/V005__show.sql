@@ -1,4 +1,4 @@
-CREATE TABLE show (
+CREATE TABLE shows (
   id         INT(11)   NOT NULL AUTO_INCREMENT,
   movie_id   INT(11)   NOT NULL,
   theater_id INT(11)   NOT NULL,

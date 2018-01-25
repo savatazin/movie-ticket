@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import java.time.ZonedDateTime;
 
 @Data
-@Entity(name = "show")
+@Entity(name = "shows")
 public class Show extends Base {
 
   @JsonProperty(value = "movie_id")
