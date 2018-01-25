@@ -5,21 +5,16 @@ import bd.ac.uiu.mscse.projects.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class MovieService {
+public class MovieService extends AbstractService<Movie, MovieRepository> {
 
-  @Autowired
-  private MovieRepository movieRepository;
-
-  public Movie get(final Integer id) {
-    return movieRepository.getOne(id);
+  MovieService(@Autowired MovieRepository movieRepository) {
+    super(movieRepository);
   }
 
-  public Integer save(Movie movie) {
-    return movieRepository.save(movie).getId();
-  }
-
-  public Integer update(Movie movie) {
-    return movieRepository.save(movie).getId();
+  public List<Movie> search(String query) {
+    return repository.findByTitleIgnoreCase(query);
   }
 }
