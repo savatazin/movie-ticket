@@ -12,6 +12,7 @@
       <tr>
         <th>Movie</th>
         <th>Theater</th>
+        <th>Show Time</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -19,15 +20,18 @@
       <c:forEach items="${shows}" var="show">
         <tr>
           <td>
-            <img src="${show.movie.bannerUrl}">
+            <img src="${show.movie.posterImgUrl}" height="200">
             <h3>${show.movie.title}</h3>
           </td>
           <td>${show.theater.title} (${show.theater.capacity})</td>
           <td>
-            <a href="/admin/theater/${show.id}/edit">
+            On ${show.show_date} from ${show.show_time_start} to ${show.show_time_end}
+          </td>
+          <td>
+            <a href="/admin/show/${show.id}/edit">
               <span class="glyphicon glyphicon-edit"></span>
             </a>
-            <a href="/admin/theater/${show.id}/delete">
+            <a href="/admin/show/${show.id}/delete">
               <span class="glyphicon glyphicon-remove"></span>
             </a>
           </td>

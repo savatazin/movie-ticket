@@ -6,7 +6,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.time.ZonedDateTime;
+import java.sql.Date;
 
 @Data
 @Entity(name = "shows")
@@ -21,15 +21,14 @@ public class Show extends Base {
   private Integer theaterId;
 
   @JsonProperty(value = "show_date")
-  @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
-  @Column(name = "show_time")
-  private ZonedDateTime showDate;
+  @Column(name = "show_date")
+  private Date showDate;
 
   @JsonProperty(value = "show_time_start")
   @Column(name = "show_time_start")
-  private Integer showTimeStart;
+  private String showTimeStart;
 
   @JsonProperty(value = "show_time_end")
   @Column(name = "show_time_end")
-  private Integer showTimeEnd;
+  private String showTimeEnd;
 }

@@ -65,7 +65,7 @@ $(function () {
 
   $('.time-picker').datetimepicker({
     datepicker: false,
-    format: 'Hi'
+    format: 'H:i:00'
   });
 
 });
