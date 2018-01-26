@@ -19,28 +19,28 @@ public class AdminController {
   @RequestMapping(value = "/booking", method = RequestMethod.GET)
   public ModelAndView booking() {
     ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("admin/booking");
+    modelAndView.setViewName("admin/booking/index");
     return modelAndView;
   }
 
   @RequestMapping(value = "/movie", method = RequestMethod.GET)
   public ModelAndView movie() {
     ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("admin/movie");
+    modelAndView.setViewName("admin/movie/index");
     return modelAndView;
   }
 
   @RequestMapping(value = "/show", method = RequestMethod.GET)
   public ModelAndView show() {
     ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("admin/show");
+    modelAndView.setViewName("admin/show/index");
     return modelAndView;
   }
 
   @RequestMapping(value = "/theater", method = RequestMethod.GET)
   public ModelAndView theater() {
     ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("admin/theater");
+    modelAndView.setViewName("admin/theater/index");
     return modelAndView;
   }
 }
