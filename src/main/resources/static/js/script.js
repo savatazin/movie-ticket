@@ -60,12 +60,12 @@ $(function () {
 
   $('.date-picker').datetimepicker({
     timepicker: false,
-    format: 'd.m.Y'
+    format: 'Y-m-d'
   });
 
   $('.time-picker').datetimepicker({
     datepicker: false,
-    format: 'H:i'
+    format: 'Hi'
   });
 
 });

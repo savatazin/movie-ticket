@@ -18,10 +18,6 @@ public class Movie extends Base {
   @Column(name = "imdb_url")
   private String imdbUrl;
 
-  @JsonProperty(value = "rotten_tomatoes_url")
-  @Column(name = "rotten_tomatoes_url")
-  private String rottenTomatoesUrl;
-
   @JsonProperty(value = "poster_img_url")
   @Column(name = "poster_img_url")
   private String posterImgUrl;

@@ -18,13 +18,6 @@
       </div>
 
       <div class="form-group">
-        <label for="rottenTomatoesUrl">Rotten Tomatoes Url</label>
-        <input type="text" class="form-control" id="rottenTomatoesUrl"
-               placeholder="Rotten Tomatoes Url" name="rottenTomatoesUrl"
-               value="${theater.rottenTomatoesUrl}">
-      </div>
-
-      <div class="form-group">
         <label>Poster Image</label>
         <div>
           <label for="posterImgUrl">
