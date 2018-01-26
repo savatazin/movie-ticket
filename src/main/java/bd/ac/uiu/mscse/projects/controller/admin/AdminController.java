@@ -36,11 +36,4 @@ public class AdminController {
     modelAndView.setViewName("admin/show/index");
     return modelAndView;
   }
-
-  @RequestMapping(value = "/theater", method = RequestMethod.GET)
-  public ModelAndView theater() {
-    ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("admin/theater/index");
-    return modelAndView;
-  }
 }
