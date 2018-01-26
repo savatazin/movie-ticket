@@ -23,12 +23,12 @@ public class AdminController {
     return modelAndView;
   }
 
-  @RequestMapping(value = "/movie", method = RequestMethod.GET)
-  public ModelAndView movie() {
-    ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("admin/movie/index");
-    return modelAndView;
-  }
+//  @RequestMapping(value = "/movie", method = RequestMethod.GET)
+//  public ModelAndView movie() {
+//    ModelAndView modelAndView = new ModelAndView();
+//    modelAndView.setViewName("admin/movie/index");
+//    return modelAndView;
+//  }
 
   @RequestMapping(value = "/show", method = RequestMethod.GET)
   public ModelAndView show() {

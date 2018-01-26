@@ -17,53 +17,53 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.websocket.server.PathParam;
 
-@Controller
-@RequestMapping(value = "/admin/movie")
+//@Controller
+//@RequestMapping(value = "/admin/movie")
 public class MovieController2 {
 
-  @Autowired
-  private UserService userService;
-  @Autowired
-  private MovieService movieService;
-
-  @RequestMapping(value = "/list", method = RequestMethod.GET)
-  public ModelAndView home() {
-    ModelAndView modelAndView = new ModelAndView();
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    User user = userService.findUserByEmail(auth.getName());
-    modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-    modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
-    modelAndView.setViewName("admin/home");
-    return modelAndView;
-  }
-
-  @RequestMapping(value = {"/new", "/edit"}, method = RequestMethod.GET)
-  public ModelAndView newMovie(@PathParam(value = "id") final Integer id) {
-    ModelAndView modelAndView = new ModelAndView();
-    Movie movie = (id == null) ? new Movie() : movieService.get(id);
-    modelAndView.addObject("id", movie.getId() == null ? "" : movie.getId());
-    modelAndView.addObject("movieTitle", movie.getTitle() == null ? "" : movie.getTitle());
-    modelAndView.addObject("imdbUrl", movie.getImdbUrl() == null ? "" : movie.getImdbUrl());
-    modelAndView.addObject("rottenTomatoesUrl", movie.getRottenTomatoesUrl() == null ? "" : movie.getRottenTomatoesUrl());
-    modelAndView.addObject("posterImgUrl", movie.getPosterImgUrl() == null ? "" : movie.getPosterImgUrl());
-    modelAndView.addObject("bannerImgUrl", movie.getBannerImgUrl() == null ? "" : movie.getBannerImgUrl());
-    modelAndView.addObject("formAction", id == null ? "save" : "update");
-
-    modelAndView.setViewName("/admin/movie/form");
-    return modelAndView;
-  }
-
-//  @RequestMapping(value = {"/", ""}, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//  public String save(@RequestBody Movie movie) {
-//    System.out.println(movieService.save(movie));
+//  @Autowired
+//  private UserService userService;
+//  @Autowired
+//  private MovieService movieService;
+//
+//  @RequestMapping(value = "/list", method = RequestMethod.GET)
+//  public ModelAndView home() {
+//    ModelAndView modelAndView = new ModelAndView();
+//    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//    User user = userService.findUserByEmail(auth.getName());
+//    modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+//    modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
+//    modelAndView.setViewName("admin/home");
+//    return modelAndView;
+//  }
+//
+//  @RequestMapping(value = {"/new", "/edit"}, method = RequestMethod.GET)
+//  public ModelAndView newMovie(@PathParam(value = "id") final Integer id) {
+//    ModelAndView modelAndView = new ModelAndView();
+//    Movie movie = (id == null) ? new Movie() : movieService.get(id);
+//    modelAndView.addObject("id", movie.getId() == null ? "" : movie.getId());
+//    modelAndView.addObject("movieTitle", movie.getTitle() == null ? "" : movie.getTitle());
+//    modelAndView.addObject("imdbUrl", movie.getImdbUrl() == null ? "" : movie.getImdbUrl());
+//    modelAndView.addObject("rottenTomatoesUrl", movie.getRottenTomatoesUrl() == null ? "" : movie.getRottenTomatoesUrl());
+//    modelAndView.addObject("posterImgUrl", movie.getPosterImgUrl() == null ? "" : movie.getPosterImgUrl());
+//    modelAndView.addObject("bannerImgUrl", movie.getBannerImgUrl() == null ? "" : movie.getBannerImgUrl());
+//    modelAndView.addObject("formAction", id == null ? "save" : "update");
+//
+//    modelAndView.setViewName("/admin/movie/form");
+//    return modelAndView;
+//  }
+//
+////  @RequestMapping(value = {"/", ""}, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+////  public String save(@RequestBody Movie movie) {
+////    System.out.println(movieService.save(movie));
+////    return "ok";
+////  }
+//
+//  @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//  public String update(@RequestBody Movie movie, @PathVariable(value = "id") Integer id) {
+//    movie.setId(id);
+//    System.out.println(movieService.update(movie));
 //    return "ok";
 //  }
-
-  @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public String update(@RequestBody Movie movie, @PathVariable(value = "id") Integer id) {
-    movie.setId(id);
-    System.out.println(movieService.update(movie));
-    return "ok";
-  }
 
 }
