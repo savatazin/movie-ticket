@@ -5,7 +5,9 @@ import bd.ac.uiu.mscse.projects.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MovieService extends AbstractService<Movie, MovieRepository> {
@@ -14,7 +16,11 @@ public class MovieService extends AbstractService<Movie, MovieRepository> {
     super(movieRepository);
   }
 
-  public List<Movie> search(String query) {
-    return repository.findByTitleIgnoreCase(query);
+  public Map<String, Object> search(String query) {
+    Map<String, Object> searchResults = new HashMap<>();
+    List<Movie> items = repository.findByTitleContaining(query);
+    searchResults.put("items", items);
+    searchResults.put("total_count", items.size());
+    return searchResults;
   }
 }

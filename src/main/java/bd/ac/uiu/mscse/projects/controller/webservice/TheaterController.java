@@ -8,12 +8,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/webservice/theater")
 public class TheaterController {
   @Autowired
   private TheaterService theaterService;
+
+  @RequestMapping(value = "/search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+  public ResponseEntity<Map<String, Object>> list(@RequestParam(value = "q") String query) {
+    return ResponseEntity.ok(theaterService.search(query));
+  }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<Theater> get(@PathVariable(value = "id") Integer id) {

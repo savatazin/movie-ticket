@@ -30,10 +30,10 @@ public class AdminController {
 //    return modelAndView;
 //  }
 
-  @RequestMapping(value = "/show", method = RequestMethod.GET)
-  public ModelAndView show() {
-    ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("admin/show/index");
-    return modelAndView;
-  }
+//  @RequestMapping(value = "/show", method = RequestMethod.GET)
+//  public ModelAndView show() {
+//    ModelAndView modelAndView = new ModelAndView();
+//    modelAndView.setViewName("admin/show/index");
+//    return modelAndView;
+//  }
 }

@@ -20,9 +20,16 @@ public class Show extends Base {
   @Column(name = "theater_id")
   private Integer theaterId;
 
-  @JsonProperty(value = "show_time")
+  @JsonProperty(value = "show_date")
   @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
   @Column(name = "show_time")
-  public ZonedDateTime showTime;
+  private ZonedDateTime showDate;
 
+  @JsonProperty(value = "show_time_start")
+  @Column(name = "show_time_start")
+  private Integer showTimeStart;
+
+  @JsonProperty(value = "show_time_end")
+  @Column(name = "show_time_end")
+  private Integer showTimeEnd;
 }

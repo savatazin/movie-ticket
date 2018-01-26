@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
-import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/webservice/movie")
@@ -18,7 +18,7 @@ public class MovieController {
   private MovieService movieService;
 
   @RequestMapping(value = "/search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public ResponseEntity<List<Movie>> list(@PathParam(value = "q") String query) {
+  public ResponseEntity<Map<String, Object>> list(@RequestParam(value = "q") String query) {
     return ResponseEntity.ok(movieService.search(query));
   }
 
