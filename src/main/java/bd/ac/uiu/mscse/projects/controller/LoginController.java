@@ -5,11 +5,10 @@ import bd.ac.uiu.mscse.projects.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.validation.Valid;
 
 @Controller
 public class LoginController {
@@ -33,7 +32,7 @@ public class LoginController {
   }
 
   @RequestMapping(value = "/registration", method = RequestMethod.POST)
-  public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+  public ModelAndView createNewUser(@ModelAttribute("userForm") User user, BindingResult bindingResult) {
     ModelAndView modelAndView = new ModelAndView();
     User userExists = userService.findUserByEmail(user.getEmail());
     if (userExists != null) {
@@ -48,7 +47,6 @@ public class LoginController {
       modelAndView.addObject("successMessage", "User has been registered successfully");
       modelAndView.addObject("user", new User());
       modelAndView.setViewName("registration");
-
     }
     return modelAndView;
   }
