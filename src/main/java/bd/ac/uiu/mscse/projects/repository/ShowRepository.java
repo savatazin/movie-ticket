@@ -10,5 +10,7 @@ import java.util.List;
 @Repository
 public interface ShowRepository extends JpaRepository<Show, Integer> {
   List<Show> findByShowDateGreaterThanEqual(Date date);
+
+  List<Show> findByMovieIdAndShowDateGreaterThanEqual(Integer movieId, Date date);
 }
 

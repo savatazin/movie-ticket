@@ -17,4 +17,8 @@ public class ShowService extends AbstractService<Show, ShowRepository> {
   public List<Show> getUpcomingShows() {
     return repository.findByShowDateGreaterThanEqual(new Date());
   }
+
+  public List<Show> getAllCurrentShowsOf(Integer movieId) {
+    return repository.findByMovieIdAndShowDateGreaterThanEqual(movieId, new Date());
+  }
 }
