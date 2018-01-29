@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PublicController {
@@ -27,6 +28,12 @@ public class PublicController {
   @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
   public ModelAndView home() {
     ModelAndView modelAndView = new ModelAndView();
+    List<Movie> allMovie = movieService.getAll();
+    if (allMovie.size() > 6) {
+      modelAndView.addObject("bannerMovies", allMovie.subList(0, 5));
+    } else {
+      modelAndView.addObject("bannerMovies", allMovie);
+    }
     modelAndView.addObject("movies", getUniqueMovies(showService.getUpcomingShows()));
     modelAndView.setViewName("home");
     return modelAndView;
@@ -39,6 +46,23 @@ public class PublicController {
     modelAndView.addObject("shows", showService.getAllCurrentShowsOf(movieId));
     modelAndView.setViewName("movie");
     return modelAndView;
+  }
+
+  @RequestMapping(value = "/book/{showId}", method = RequestMethod.GET)
+  public ModelAndView book(@PathVariable(value = "showId") Integer showId) {
+    ModelAndView modelAndView = new ModelAndView();
+    Show show = showService.get(showId);
+    modelAndView.addObject("show", show);
+    modelAndView.addObject("movie", movieService.get(show.getMovieId()));
+    modelAndView.addObject("theater", theaterService.get(show.getTheaterId()));
+    modelAndView.addObject("bookKey", System.currentTimeMillis());
+    modelAndView.setViewName("book-show");
+    return modelAndView;
+  }
+
+  @RequestMapping(value = "/book/{showId}/purchase", method = RequestMethod.POST)
+  public ModelAndView purchase(@PathVariable(value = "showId") Integer showId) {
+    return new ModelAndView("redirect:/profile/history");
   }
 
   private List<Movie> getUniqueMovies(List<Show> upcomingShows) {
