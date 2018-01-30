@@ -39,13 +39,42 @@
 
 <div class="container">
   <div class="row">
-    <%@include file="helpers/ticket.jsp" %>
+    <h1>Ticket Purchase History</h1>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Movie Name</th>
+        <th>Show Time</th>
+        <th>Theater</th>
+        <th>Seat No</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <c:forEach items="${bookings}" var="booking">
+        <tr>
+          <td>${booking.movie.title}</td>
+          <td>
+            On ${booking.show.showDate} from ${booking.show.showTimeStart}
+            to ${booking.show.showTimeEnd}
+          </td>
+          <td>
+              ${booking.theater.title}
+          </td>
+          <td>
+              ${booking.seatNo}
+          </td>
+          <td>
+            <a href="/profile/book/${booking.id}" class="btn btn-warning">Print</a>
+          </td>
+        </tr>
+      </c:forEach>
+      </tbody>
+    </table>
+
   </div>
 </div>
-
-<form action="/book/${show.id}/${seatNo}/purchase" method="post" name="bookForm">
-  <button type="submit" class="btn btn-success">Purchase</button>
-</form>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
