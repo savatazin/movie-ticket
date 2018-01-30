@@ -1,4 +1,3 @@
-<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 <style>
   .movie-ticket {
     width: 600px;

@@ -65,7 +65,8 @@ $(function () {
 
   $('.time-picker').datetimepicker({
     datepicker: false,
-    format: 'H:i:00'
+    format: 'H:i'
   });
 
+  JsBarcode(".barcode").init();
 });

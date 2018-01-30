@@ -1,4 +1,4 @@
-<%@include file="../header.jsp" %>
+<%@include file="../../helpers/header.jsp" %>
 
 <div class="container">
   <div class="row">
@@ -28,9 +28,9 @@
             On ${show.show_date} from ${show.show_time_start} to ${show.show_time_end}
           </td>
           <td>
-            <a href="/admin/show/${show.id}/edit">
-              <span class="glyphicon glyphicon-edit"></span>
-            </a>
+            <%--<a href="/admin/show/${show.id}/edit">--%>
+              <%--<span class="glyphicon glyphicon-edit"></span>--%>
+            <%--</a>--%>
             <a href="/admin/show/${show.id}/delete">
               <span class="glyphicon glyphicon-remove"></span>
             </a>
@@ -42,4 +42,4 @@
   </div>
 </div>
 
-<%@include file="../footer.jsp" %>
+<%@include file="../../helpers/footer.jsp" %>

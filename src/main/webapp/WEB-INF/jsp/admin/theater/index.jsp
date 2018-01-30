@@ -1,4 +1,4 @@
-<%@include file="../header.jsp" %>
+<%@include file="../../helpers/header.jsp" %>
 
 <div class="container">
   <div class="row">
@@ -35,4 +35,4 @@
   </div>
 </div>
 
-<%@include file="../footer.jsp" %>
+<%@include file="../../helpers/footer.jsp" %>
