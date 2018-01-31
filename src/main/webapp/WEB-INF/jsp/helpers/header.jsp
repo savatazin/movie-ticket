@@ -8,8 +8,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
 
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        rel="stylesheet"/>
+  <link href="https://bootswatch.com/4/slate/bootstrap.min.css" rel="stylesheet"/>
   <link href="/css/select2.min.css" rel="stylesheet"/>
   <link href="/css/jquery.datetimepicker.css" rel="stylesheet"/>
   <link href="/css/style.css" rel="stylesheet"/>
