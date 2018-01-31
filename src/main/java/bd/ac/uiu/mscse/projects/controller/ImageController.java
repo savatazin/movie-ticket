@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 @RequestMapping(value = "/image")
 public class ImageController {
 
-  private final String directory = "G:\\uploads";
+  private final String directory = "/var/movies/uploads";
 
   @RequestMapping(value = "/upload", method = RequestMethod.POST)
   public ResponseEntity<Void> upload(@RequestParam("uploadfile") MultipartFile uploadfile) {

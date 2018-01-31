@@ -125,9 +125,12 @@ public class PublicController {
   private List<Movie> getUniqueMovies(List<Show> upcomingShows) {
     List<Movie> movies = new ArrayList<>();
     for (Show upcomingShow : upcomingShows) {
-      Movie movie = movieService.get(upcomingShow.getMovieId());
-      if (!movies.contains(movie)) {
-        movies.add(movie);
+      try {
+        Movie movie = movieService.get(upcomingShow.getMovieId());
+        if (!movies.contains(movie)) {
+          movies.add(movie);
+        }
+      } catch (Exception ignored) {
       }
     }
     return movies;
