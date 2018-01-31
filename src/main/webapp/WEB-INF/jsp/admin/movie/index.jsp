@@ -8,13 +8,12 @@
       <a href="/admin/movie/new" class="btn btn-success">Add New Movie</a>
     </div>
 
-    <ul>
+    <ul class="movie-list">
       <c:forEach items="${movies}" var="movie">
         <li>
-          <a href="/admin/movie/${movie.id}">
             <img class="banner-img" src="${movie.posterImgUrl}" width="213" height="300">
             <h3>${movie.title}</h3>
-          </a>
+            <a href="/admin/movie/${movie.id}/delete" class="btn btn-danger btn-block">Delete</a>
         </li>
       </c:forEach>
     </ul>

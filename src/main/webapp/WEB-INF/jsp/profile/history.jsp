@@ -29,7 +29,7 @@
               ${booking.seatNo}
           </td>
           <td>
-            <a href="/profile/book/${booking.id}" class="btn btn-warning">Print</a>
+            <a href="/profile/book/${booking.id}" class="btn btn-warning" target="_blank">Print</a>
           </td>
         </tr>
       </c:forEach>

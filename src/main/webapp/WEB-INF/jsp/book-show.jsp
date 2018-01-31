@@ -6,7 +6,9 @@
   </div>
 </div>
 
-<form action="/book/${show.id}/${seatNo}/purchase" method="post" name="bookForm"
+<h2>${show}</h2>
+
+<form action="/book/${booking.show.id}/${booking.seatNo}/purchase" method="post" name="bookForm"
       class="text-center">
   <button type="submit" class="btn btn-success btn-lg">Purchase</button>
 </form>

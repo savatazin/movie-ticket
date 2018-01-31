@@ -1,7 +1,9 @@
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <sec:authentication var="user" property="principal"/>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -18,13 +20,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <sec:authorize access="hasRole('admin')">
+      <c:if test="${!empty user and user ne 'anonymousUser' and fn:contains(user.authorities, 'ADMIN')}">
         <ul class="nav navbar-nav">
           <li><a href="/admin/theater">Theaters</a></li>
           <li><a href="/admin/movie">Movies</a></li>
           <li><a href="/admin/show">Shows</a></li>
         </ul>
-      </sec:authorize>
+      </c:if>
 
 
       <ul class="nav navbar-nav navbar-right">
